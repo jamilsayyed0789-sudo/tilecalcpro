@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { GoogleAnalytics } from '@next/third-parties/google';
 import {
   BASE_URL,
   SITE_NAME,
@@ -160,6 +161,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </LanguageProvider>
+        <GoogleAnalytics gaId="G-87XZEF1EH5" />
       </body>
     </html>
   );
