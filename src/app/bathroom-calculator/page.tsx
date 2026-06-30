@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Grid, Box, Columns, Rows, Droplets } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { BASE_URL, webApplicationSchema, breadcrumbSchema } from "@/utils/seo";
 
 type Unit = "Feet" | "Meters" | "Inches" | "MM";
 
@@ -202,6 +203,9 @@ export default function BathroomCalculator() {
   };
 
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webApplicationSchema({ name: "Bathroom Tile Calculator – TileCalc Pro", description: "Calculate tile requirements for bathroom walls and floors simultaneously. Enter dimensions and get tile count, boxes and cost instantly.", url: `${BASE_URL}/bathroom-calculator` })) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: BASE_URL }, { name: "Bathroom Calculator", url: `${BASE_URL}/bathroom-calculator` }])) }} />
     <div className="container mx-auto px-4 py-12 max-w-5xl">
       <div className="mb-10 text-center">
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 flex items-center justify-center gap-3">
@@ -500,5 +504,6 @@ export default function BathroomCalculator() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Calculator, Maximize, Box } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { BASE_URL, webApplicationSchema, breadcrumbSchema } from "@/utils/seo";
 
 type Unit = "Feet" | "Meters" | "Inches" | "MM";
 
@@ -119,6 +120,9 @@ export default function FloorCalculator() {
   };
 
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webApplicationSchema({ name: "Floor Tile Calculator – TileCalc Pro", description: "Calculate total tiles, boxes needed, and estimated cost for any floor area with wastage support.", url: `${BASE_URL}/floor-calculator` })) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: BASE_URL }, { name: "Floor Calculator", url: `${BASE_URL}/floor-calculator` }])) }} />
     <div className="container mx-auto px-4 py-12 max-w-5xl">
       <div className="mb-10 text-center">
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 flex items-center justify-center gap-3">
@@ -302,5 +306,6 @@ export default function FloorCalculator() {
         </div>
       </div>
     </div>
+    </>
   );
 }
